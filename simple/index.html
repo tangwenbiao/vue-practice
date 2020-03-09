@@ -1,0 +1,61 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title></title>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+
+<div id="app">
+	<span v-bind:title="message">鼠标移动过来</span></br>
+	{{message}}</br>
+	<p v-if="seen">if条件</p>
+</div>
+
+<div id="for">
+	<ol>
+		<li v-for="t in title">
+			{{t.topic}} : {{t.value}}
+		</li>
+	</ol>
+</div>
+
+<div id="click">
+	<p>{{message}}</P>
+	<button v-on:click="reverseMethod">按钮</button>
+</div>
+
+
+<script type="text/javascript">
+var app=new Vue({
+el:'#app',
+data:{
+	message:"money",
+	seen:true,
+}
+});
+
+var contexts=new Vue({
+	el:"#for",
+	data:{
+		title:[
+		{topic:"一",value:1},
+		{topic:"二",value:2}
+		]
+	}
+});
+
+var reverse=new Vue({
+	el:"#click",
+	data:{
+		message:"点一下"
+	},
+	methods: {
+		reverseMethod:function(){
+			this.message=this.message.split("").reverse().join("")
+		}
+	}
+})
+
+</script>
+
+</html>
