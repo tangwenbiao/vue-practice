@@ -5,6 +5,13 @@
     <ul>
       <li>
         <a
+          href="http://localhost:8080/#/simple"
+          target="_blank">
+          Simple_Model
+        </a>
+      </li>
+      <li>
+        <a
           href="https://vuejs.org"
           target="_blank"
         >

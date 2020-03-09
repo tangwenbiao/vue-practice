@@ -3,9 +3,9 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-
+import globalConfig from '../config/global.config'
 Vue.config.productionTip = false
-
+Vue.prototype.GLOBAL_CONFIG=globalConfig
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
