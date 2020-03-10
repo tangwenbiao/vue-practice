@@ -2,8 +2,9 @@
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
 
-import global from './global.config'
+//import global from './global.config'
 const path = require('path')
+const globalConfig=require('../src/store/global.config')
 
 module.exports = {
   dev: {
@@ -15,7 +16,7 @@ module.exports = {
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: global.port, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: globalConfig.port, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,

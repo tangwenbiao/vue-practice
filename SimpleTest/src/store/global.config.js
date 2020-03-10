@@ -1,5 +1,5 @@
 const port=8080
 
-export default{
+module.exports={
     port
 }
