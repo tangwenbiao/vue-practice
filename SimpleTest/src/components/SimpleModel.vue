@@ -1,9 +1,8 @@
 <template>
-    <div>
-        <p>Simple model!!!</p>
+    <div id="SimpleHome">
         <ol>
             <li>
-                <div>{{port}}</div>
+                <router-link to="/simple/instance">simple_instance</router-link>
             </li>
         </ol>
         <router-view></router-view>
@@ -18,3 +17,20 @@ export default {
     }    
 }
 </script>
+
+<style scoped>
+h1, h2 {
+  font-weight: normal;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #42b983;
+}
+</style>
