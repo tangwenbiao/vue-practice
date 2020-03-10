@@ -7,7 +7,7 @@
         <br/>
         <button v-bind:disable="isEnable">禁用</button>
         <p v-once>charge:{{count}}</p>
-        <p v-html="colorHtml"></p>
+        <p v-bind:style="color">{{colorContext}}</p>
         <p>计算值:{{hundredCount}}</p>
         <p>当前时间:{{date}}</p>
         <br/>
@@ -20,6 +20,7 @@ export default {
     methods:{
         see: function(){
             this.$data.count+=1;
+            this.color="color:green";
         },
         updateDate(){
             var newDate=Date.now();
@@ -35,7 +36,9 @@ export default {
             isEnable:false,
             colorHtml:'<div style="color:red">charging color</div>',
             date:Date.now(),
-            dateId:null
+            dateId:null,
+            color:"color:red",
+            colorContext:"charging color!"
         }
     },
     watch:{

@@ -4,11 +4,7 @@
     <h2>Essential Links</h2>
     <ul>
       <li>
-        <a
-          href="http://localhost:8080/#/simple"
-          target="_blank">
-          Simple_Model
-        </a>
+        <router-link to=/simple>Simple_Home<router-link>
       </li>
       <li>
         <a
