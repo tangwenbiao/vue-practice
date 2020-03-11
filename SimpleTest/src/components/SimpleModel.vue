@@ -1,8 +1,8 @@
 <template>
     <div id="SimpleHome">
         <ol>
-            <li>
-                <router-link to="/simple/instance">simple_instance</router-link>
+            <li v-for='node in nodes' :key='node.id'>
+                <router-link v-bind:to="node.path">{{node.view}}</router-link>
             </li>
         </ol>
         <router-view></router-view>
@@ -13,7 +13,25 @@
 export default {
     name: 'SimpleModel',
     data(){
-    return {msg:"Simple!!!!",port: this.GLOBAL_CONFIG.port}
+    return {
+      msg:"Simple!!!!",
+      port: this.GLOBAL_CONFIG.port,
+      simpleRenderHtml:'<div id="testRender"></div>',
+      nodes:[
+        {
+          path:'/simple/instance',
+          view:'simple_instance'
+        },
+        {
+          path:'/simple/render',
+          view:'simple_render'
+        },
+        {
+          path:'/simple/jump',
+          view:'simple_jump'
+        }
+      ]
+      }
     }    
 }
 </script>

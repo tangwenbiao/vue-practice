@@ -4,7 +4,7 @@
     <h2>Essential Links</h2>
     <ul>
       <li>
-        <router-link to=/simple>Simple_Home<router-link>
+        <router-link to=/simple>Simple_Home</router-link>
       </li>
       <li>
         <a
