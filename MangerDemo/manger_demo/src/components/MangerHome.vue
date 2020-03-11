@@ -5,6 +5,11 @@
 
 <script>
 export default {
-    name:'MangerHome'
+    name:'MangerHome',
+    data(){
+        return{
+            a:"a1"
+        }
+    }
 }
 </script>
