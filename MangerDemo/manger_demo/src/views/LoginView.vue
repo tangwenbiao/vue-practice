@@ -5,11 +5,11 @@
                 <h3>Login</h3>
             </div>
             <el-form-item prop="username">
-                <el-input prefix-icon="el-icon-user" ref="loginInfo.username" type="text" placeholder="用户名" v-model="loginInfo.username" autocomplete=on tabindex="1" name="username">
+                <el-input prefix-icon="el-icon-user" ref="username" type="text" placeholder="用户名" v-model="loginInfo.username" autocomplete=on tabindex="1" name="username">
                 </el-input>
             </el-form-item>
             <el-form-item prop="password">
-                <el-input prefix-icon="el-icon-lock" ref="loginInfo.password"  type="password" placeholder="密码" v-model="loginInfo.password" autocomplete="false">
+                <el-input prefix-icon="el-icon-lock" ref="password"  type="password" placeholder="密码" v-model="loginInfo.password" autocomplete="false">
                 </el-input>
             </el-form-item>
             <el-form-item>
@@ -21,6 +21,9 @@
 
 <script>
 import {validNullStr} from '@/utils/validate'
+import {toLogin,getRoutes} from '@/api/login'
+import {addRoutes} from '@/utils/routerUtils'
+
 export default {
     name:"Login",
     data(){
@@ -49,15 +52,23 @@ export default {
     methods:{
         login:function(){
             this.$refs.loginInfo.validate(valid=>{
+                var userInfo;
                 if(valid){
-                    console.log(this.rules)
-                    console.log("成功");
+                    //判断是否登录成功
+                    userInfo=toLogin(this.loginInfo,this.$router)
                 }else{
                     console.log("失败");
                 }
             });
         }
     },
+    mounted(){
+        if(this.loginInfo.username==""){
+            this.$refs.username.focus();
+        }else if(this.loginInfo.password==""){
+            this.$refs.password.focus();
+        }
+    }
 }
 </script>
 <style lang="scss">

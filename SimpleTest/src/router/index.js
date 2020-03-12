@@ -10,7 +10,7 @@ import SimpleJump from '@/components/practice/SimpleJump'
 
 Vue.use(Router)
 
-const router=new VueRouter({
+const router=new Router({
   model: 'history',
   routes: [
     {
