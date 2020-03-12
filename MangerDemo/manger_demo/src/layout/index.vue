@@ -1,6 +1,6 @@
 <template>
   <div class="layout">
-    <SideBarMain></SideBarMain>
+    <SideBarMain class="side-bar-main"></SideBarMain>
     <div>
       <div class="top-bar">
         <el-button type="danger" round class="log-out" @click="logout">退出</el-button>

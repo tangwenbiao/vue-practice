@@ -1,0 +1,27 @@
+@import './variables.scss';
+
+#app {
+    .scroll-bar-wrapper {
+        overflow-x: hidden
+    }
+
+    //左侧bar的整体样式
+    .side-bar-main {
+        transition: width 0.28s; //动画
+        width: $sideBarWidth; //宽度
+        background-color: $menuBg; //背景颜色
+        height: 100%; //高度
+        position: fixed; //固定
+        font-size: 0px;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1001; //优先级，确定显示顺序
+        overflow: hidden;
+    }
+
+    //滚动条的基本设置
+    .el-scrollbar {
+        height: 100%;
+    }
+}
