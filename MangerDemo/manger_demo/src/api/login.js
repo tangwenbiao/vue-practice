@@ -1,7 +1,8 @@
 
 import OrderView from '@/views/OrderView.vue'
 import GraphView from '@/views/GraphView.vue'
-import {addRoutes} from '@/utils/routerUtils.js'
+import { addRoutes } from '@/utils/routerUtils.js'
+import permission from '../store/modules/PermissionModule.js'
 
 const getUserInfo = function (info) {
     var userInfo
@@ -44,6 +45,8 @@ export function toLogin(info, router) {
     if (userInfo.status) {
         //获取路由信息，新增路由
         var routes = getRoutes(userInfo.userId)
+        //添加到全局
+        addRoutesToGlobal(routes)
         //挂载路由
         addRoutes(routes, router)
         //跳转
@@ -54,7 +57,11 @@ export function toLogin(info, router) {
     return userInfo;
 }
 
-
+const addRoutesToGlobal = function (routes) {
+    console.log("路由信息")
+    console.log(routes)
+    permission.commit("initRoutes", routes)
+}
 
 const adminRoutes = [
     {

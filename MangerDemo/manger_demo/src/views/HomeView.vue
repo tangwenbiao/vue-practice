@@ -9,11 +9,7 @@
 import Layout from "@/layout";
 export default {
   name: "HomeView",
-  components: { Layout },
-  mounted() {
-    console.log("查看路由信息");
-    console.log(this.$router);
-  }
+  components: { Layout }
 };
 </script>
 

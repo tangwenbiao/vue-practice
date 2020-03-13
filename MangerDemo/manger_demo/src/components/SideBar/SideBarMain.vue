@@ -14,7 +14,7 @@
         :collapse-transaction="false"
       >
         <!--子项目-->
-        <sideBarItem></sideBarItem>
+        <sideBarItem v-for="item in permission_routes" :key="item.path" :item="item" :barHidden="barHidden"></sideBarItem>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -24,13 +24,18 @@
 import variables from "@/style/variables.scss";
 import sideBarItem from "./SideBarItem";
 
-//属性可以通过 computed暴露出来。然后在template中使用。
 export default {
   name: "SideBarMain",
   components: {
     sideBarItem
   },
-  computed: {
+  computed:{
+    permission_routes(){
+      return this.$store.state.permission.routes;
+    },
+    barHidden(){
+      return this.$store.state.side.barHidden;
+    },
     variables() {
       return variables;
     }
