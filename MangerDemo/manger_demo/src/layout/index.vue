@@ -16,7 +16,7 @@
 <script>
 import SideBarMain from "@/components/SideBar/SideBarMain";
 import { toLogout } from "@/api/login.js";
-import SideModules from '../store/modules/SideBarModule'
+import SideModules from "../store/modules/SideBarModule";
 export default {
   name: "Layout",
   components: { SideBarMain },
@@ -24,8 +24,8 @@ export default {
     logout: function() {
       toLogout(this.$router);
     },
-    toChange(){
-      SideModules.commit("clickHidden")
+    toChange() {
+      SideModules.commit("clickHidden");
     }
   }
 };

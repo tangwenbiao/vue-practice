@@ -14,7 +14,12 @@
         :collapse-transaction="false"
       >
         <!--子项目-->
-        <sideBarItem v-for="item in permission_routes" :key="item.path" :item="item" :barHidden="barHidden"></sideBarItem>
+        <sideBarItem
+          v-for="item in permission_routes"
+          :key="item.path"
+          :item="item"
+          :barHidden="barHidden"
+        ></sideBarItem>
       </el-menu>
     </el-scrollbar>
   </div>
@@ -23,17 +28,16 @@
 <script>
 import variables from "@/style/variables.scss";
 import sideBarItem from "./SideBarItem";
+import permissionRouter from "../../store/modules/PermissionModule.js";
 
 export default {
   name: "SideBarMain",
   components: {
     sideBarItem
   },
-  computed:{
-    permission_routes(){
-      return this.$store.state.permission.routes;
-    },
-    barHidden(){
+  computed: {
+    permission_routes: permissionRouter.getters.getRoutes,
+    barHidden() {
       return this.$store.state.side.barHidden;
     },
     variables() {

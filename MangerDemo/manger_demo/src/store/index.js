@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import createPersistedState from "vuex-persistedstate"
 import SideBarModule from './modules/SideBarModule.js'
 import permissionModule from './modules/PermissionModule.js'
 
@@ -19,9 +20,9 @@ const modules = modulesFiles.keys().reduce((modules, modulePath) => {
 }, {})
 
 const store = new Vuex.Store({
-    modules:{
-        side:SideBarModule,
-        permission:permissionModule
+    modules: {
+        side: SideBarModule,
+        permission: permissionModule
     }
 })
 

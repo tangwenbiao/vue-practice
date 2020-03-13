@@ -3,31 +3,43 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 
-const permissionModule=new Vuex.Store({
-    namespace:true,
-    state:{
-        routes:[]
+const permissionModule = new Vuex.Store({
+    namespace: true,
+    state: {
+        routes: [],
+        userId: null
     },
-    mutations:{
-        initRoutes(state,routes){
-            console.log("触发初始化路由选项")
-            state.routes=wrapperRoutes(routes);
+    getters: {
+        getRoutes: state => {
+            return function () {
+                if (state.routes.length == 0) {
+                    state.routes = JSON.parse(sessionStorage.getItem("routes"))
+                }
+                return state.routes
+            }
+        }
+    },
+    mutations: {
+        initRoutes(state, routes) {
+            state.routes = wrapperRoutes(routes);
+            //存储到本地
+            sessionStorage.setItem("routes", JSON.stringify(state.routes))
         },
-        addRoutes(state,routes){
+        addRoutes(state, routes) {
             state.routes.push(routes)
+        },
+        setUserId(state, userId) {
+            state.state = userId
         }
     }
 })
 
-const wrapperRoutes=function(routes){
-    var wrapRoutes=[]
-    routes.forEach((item,i) => {
+const wrapperRoutes = function (routes) {
+    var wrapRoutes = []
+    routes.forEach((item, i) => {
         console.log(item)
-        var temp=item;
-        temp.hidden=false;
-        console.log("单条内容")
-        console.log(item)
-        console.log(temp)
+        var temp = item;
+        temp.hidden = false;
         wrapRoutes.push(temp);
     });
     return wrapRoutes;

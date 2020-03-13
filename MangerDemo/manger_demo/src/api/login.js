@@ -3,6 +3,10 @@ import OrderView from '@/views/OrderView.vue'
 import GraphView from '@/views/GraphView.vue'
 import { addRoutes } from '@/utils/routerUtils.js'
 import permission from '../store/modules/PermissionModule.js'
+import UserView from '../views/UserView.vue'
+import GraphChildView from '../views/GraphChildView.vue'
+import permissionModule from '../store/modules/PermissionModule.js'
+import router from '../router'
 
 const getUserInfo = function (info) {
     var userInfo
@@ -43,12 +47,8 @@ export function toLogin(info, router) {
     //登录
     var userInfo = getUserInfo(info);
     if (userInfo.status) {
-        //获取路由信息，新增路由
-        var routes = getRoutes(userInfo.userId)
-        //添加到全局
-        addRoutesToGlobal(routes)
-        //挂载路由
-        addRoutes(routes, router)
+        //装载路由
+        loadRoutes(userInfo.userId,router)
         //跳转
         router.push("/home")
     } else {
@@ -57,9 +57,26 @@ export function toLogin(info, router) {
     return userInfo;
 }
 
+export function loadRoutes(userId,router){
+    //获取路由信息，新增路由
+    var routes = getRoutes(userId)
+    //添加到全局
+    addRoutesToGlobal(routes)
+    //挂载路由
+    addRoutes(routes, router)
+}
+
+function toReloadRoutes(){
+    if(permissionModule.state.userId==null){
+        toLogout(router)
+        return
+    }
+    loadRoutes(permissionModule.state.userId,router)
+}
+
+
+
 const addRoutesToGlobal = function (routes) {
-    console.log("路由信息")
-    console.log(routes)
     permission.commit("initRoutes", routes)
 }
 
@@ -67,7 +84,28 @@ const adminRoutes = [
     {
         path: "/order",
         name: "orderPage",
-        component: OrderView
+        component: OrderView,
+        title: "订单页面"
+    },
+    {
+        path: "/graph",
+        name: "graphPage",
+        component: GraphView,
+        title: "统计主页",
+        children: [
+            {
+                path: "/graph/child",
+                name: "graphChildPage",
+                component: GraphChildView,
+                title: "统计子页"
+            }
+        ]
+    },
+    {
+        path: "/user",
+        name: "userPage",
+        component: UserView,
+        title: "用户页面"
     }
 ]
 const guestRoutes = [
