@@ -12,6 +12,7 @@ const permissionModule = new Vuex.Store({
     getters: {
         getRoutes: state => {
             return function () {
+                //路由为空尝试加载本地信息，解决本地问题
                 if (state.routes.length == 0) {
                     state.routes = JSON.parse(sessionStorage.getItem("routes"))
                 }
