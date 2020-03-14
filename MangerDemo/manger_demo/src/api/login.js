@@ -48,7 +48,7 @@ export function toLogin(info, router) {
     var userInfo = getUserInfo(info);
     if (userInfo.status) {
         //装载路由
-        loadRoutes(userInfo.userId,router)
+        loadRoutes(userInfo.userId, router)
         //跳转
         router.push("/home")
     } else {
@@ -57,7 +57,7 @@ export function toLogin(info, router) {
     return userInfo;
 }
 
-export function loadRoutes(userId,router){
+export function loadRoutes(userId, router) {
     //获取路由信息，新增路由
     var routes = getRoutes(userId)
     //添加到全局
@@ -66,17 +66,19 @@ export function loadRoutes(userId,router){
     addRoutes(routes, router)
 }
 
-function toReloadRoutes(){
-    if(permissionModule.state.userId==null){
+function toReloadRoutes() {
+    if (permissionModule.state.userId == null) {
         toLogout(router)
         return
     }
-    loadRoutes(permissionModule.state.userId,router)
+    loadRoutes(permissionModule.state.userId, router)
 }
 
 
 
 const addRoutesToGlobal = function (routes) {
+    console.log("全局")
+    console.log(routes)
     permission.commit("initRoutes", routes)
 }
 
@@ -85,16 +87,18 @@ const adminRoutes = [
         path: "/order",
         name: "orderPage",
         component: OrderView,
-        title: "订单页面"
+        title: "订单页面",
+        icon: "el-icon-s-order"
     },
     {
-        path: "/graph",
+        path: "/manager/graph",
         name: "graphPage",
         component: GraphView,
         title: "统计主页",
+        icon: "el-icon-s-data",
         children: [
             {
-                path: "/graph/child",
+                path: "/manager/graph/child",
                 name: "graphChildPage",
                 component: GraphChildView,
                 title: "统计子页"
@@ -102,15 +106,16 @@ const adminRoutes = [
         ]
     },
     {
-        path: "/user",
+        path: "/manager/user",
         name: "userPage",
         component: UserView,
-        title: "用户页面"
+        title: "用户页面",
+        icon: "el-icon-s-data"
     }
 ]
 const guestRoutes = [
     {
-        path: "/graph",
+        path: "/manager/graph",
         name: "graphPage",
         component: GraphView
     }

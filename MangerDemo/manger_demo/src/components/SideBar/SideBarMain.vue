@@ -3,8 +3,7 @@
     <el-scrollbar wrap-class="scroll-bar-wrapper">
       <!--collapse-transaction 是否开启折叠动画。没太大用-->
       <!--主体样式-->
-      <el-menu
-        class="el-menu-vertical-demo"
+      <el-menu 
         @open="handleOpen"
         :background-color="variables.menuBg"
         :active-text-color="variables.menuActiveText"

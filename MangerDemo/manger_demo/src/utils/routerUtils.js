@@ -1,8 +1,17 @@
 import NotFoundView from '@/components/NotFound.vue'
 
 export function addRoutes(routes,router) {
-    router.addRoutes(routes);
+    console.log("路由信息")
+    router.options.routes.forEach((item,index) => {
+        if(item.name=="homePage"){
+            console.log(item.path)
+            item.children=routes
+        }
+    });
+    console.log(router.options.routes)
+    //router.addRoutes(routes);
     router.addRoutes(notFoundRoutes);
+    console.log(router.options)
 }
 
 const emptyRoutes=[]

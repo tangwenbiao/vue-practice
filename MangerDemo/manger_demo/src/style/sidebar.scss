@@ -18,6 +18,9 @@
         left: 0;
         z-index: 1001; //优先级，确定显示顺序
         overflow: hidden;
+        .el-menu{
+            width: 220px;
+        }
     }
 
     //滚动条的基本设置

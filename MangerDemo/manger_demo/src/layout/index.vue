@@ -1,13 +1,16 @@
 <template>
   <div class="layout">
+    <!--左侧栏-->
     <SideBarMain class="side-bar-main"></SideBarMain>
+    <!--顶部栏-->
     <div>
       <div class="top-bar">
-        <el-button @click="toChange">切换隐藏</el-button>
         <el-button type="danger" round class="log-out" @click="logout">退出</el-button>
+        <el-button @click="toChange" class="revers-bar">切换隐藏</el-button>
       </div>
+      <!--内容-->
       <div>
-        <router-view></router-view>
+        <router-view name="context"></router-view>
       </div>
     </div>
   </div>
@@ -36,5 +39,13 @@ export default {
   height: 100%;
   width: 100%;
   position: relative;
+  .revers-bar {
+    float: right;
+  }
+  .top-bar {
+    .log-out {
+      float: right;
+    }
+  }
 }
 </style>
